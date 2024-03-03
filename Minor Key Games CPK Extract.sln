@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minor Key Games CPK Extract", "Minor Key Games CPK Extract.csproj", "{8D1CE62E-AE9C-459D-AFB5-EFD36E500C24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D1CE62E-AE9C-459D-AFB5-EFD36E500C24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1CE62E-AE9C-459D-AFB5-EFD36E500C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1CE62E-AE9C-459D-AFB5-EFD36E500C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1CE62E-AE9C-459D-AFB5-EFD36E500C24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7C614F9-7833-42E8-BD35-24CC30BAE3D4}
+	EndGlobalSection
+EndGlobal
