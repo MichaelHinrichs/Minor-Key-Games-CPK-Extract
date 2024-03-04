@@ -34,10 +34,10 @@ namespace Minor_Key_Games_CPK_Extract
                 br.BaseStream.Position = subfile.Offset + fileDataOffset;
 
                 Directory.CreateDirectory(Path.GetDirectoryName(input.Name) + "//" + Path.GetDirectoryName(subfile.Name));
-                using FileStream FS = File.Create(Path.GetDirectoryName(input.Name) + "//" + subfile.Name.TrimEnd((char)0x00));
+                using FileStream FS = File.Create(Path.GetDirectoryName(input.Name) + "//" + subfile.Name);
                 BinaryWriter bw = new(FS);
 
-                if (subfile.isCompressed==0)
+                if (subfile.isCompressed == 1)
                 {
                     MemoryStream ms = new();
                     br.ReadInt16();
@@ -59,16 +59,17 @@ namespace Minor_Key_Games_CPK_Extract
             string Name = new(br.ReadChars(br.ReadInt32()));
             uint Offset = br.ReadUInt32();
             int sizeCompressed = br.ReadInt32();
+            int sizeUncompressed = br.ReadInt32();
 
-            if (sizeCompressed == -1)//padding in Neon STRUCT
-                sizeCompressed = br.ReadInt32();
+            if (sizeUncompressed == -1)//padding in Neon STRUCT
+                sizeUncompressed = br.ReadInt32();
 
             return new SUBFILE()
             {
-                Name = Name,
+                Name = Name.TrimEnd((char)0x00),
                 Offset = Offset,
                 sizeCompressed = sizeCompressed,
-                sizeUncompressed = br.ReadInt32(),
+                sizeUncompressed = sizeUncompressed,
                 isCompressed = br.ReadInt32()
             };
         }
