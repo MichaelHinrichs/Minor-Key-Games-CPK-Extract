@@ -18,8 +18,7 @@ namespace Minor_Key_Games_CPK_Extract
             using FileStream input = File.OpenRead(args[0]);
             BinaryReader br = new(input);
 
-            string magic = new(br.ReadChars(4));
-            if (magic != "DCPK")
+            if (new(br.ReadChars(4) != "DCPK")
                 throw new System.Exception("Not a Minor Key Games CPK file.");
 
             int fileNum = br.ReadInt32();
