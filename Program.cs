@@ -34,23 +34,18 @@ namespace Minor_Key_Games_CPK_Extract
 
                 Directory.CreateDirectory(Path.GetDirectoryName(input.Name) + "//" + Path.GetDirectoryName(subfile.Name));
                 using FileStream FS = File.Create(Path.GetDirectoryName(input.Name) + "//" + subfile.Name);
-                BinaryWriter bw = new(FS);
 
                 if (subfile.isCompressed == 1)
                 {
-                    MemoryStream ms = new();
                     br.ReadInt16();
                     using (var ds = new DeflateStream(new MemoryStream(br.ReadBytes(subfile.sizeCompressed)), CompressionMode.Decompress))
-                        ds.CopyTo(ms);
-                    br = new(ms);
-                    br.BaseStream.Position = 0;
+                        ds.CopyTo(FS);
+                    continue;
                 }
 
+                BinaryWriter bw = new(FS);
                 bw.Write(br.ReadBytes(subfile.sizeUncompressed));
-                bw.Close();
-                br = new(input);
             }
-            br.Close();
         }
 
         public static SUBFILE Subfile(BinaryReader br)
